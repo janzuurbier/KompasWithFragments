@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent" 
+  android:layout_height="wrap_content" 
+  android:orientation="vertical">
+       <TextView android:id="@+id/textViewLocation" 
+       	android:textSize="20dip" 
+       	android:text="@string/locatie"
+       	android:background="#ffffff"
+       	android:textColor="#ff0000"
+       	android:layout_width="fill_parent" 
+       	android:focusableInTouchMode="true"
+       	android:layout_height="wrap_content"
+       	android:layout_weight="0">
+       </TextView>
+       <TextView android:id="@+id/textViewDistance" 
+       	android:textSize="20dip" 
+       	android:text="@string/distance"
+       	android:background="#ffffff"
+       	android:textColor="#ff0000"
+       	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       	android:focusableInTouchMode="true"
+       	android:layout_weight="0">
+       </TextView>
+       <zrb.hu.nl.kompaswithfragments.KompasView android:id="@+id/viewkompas"
+       	android:layout_width="match_parent" 
+       	android:layout_height="0dip" 
+       	android:layout_weight="1">
+       </zrb.hu.nl.kompaswithfragments.KompasView>
+       <TextView android:id="@+id/textViewDirection"
+       	android:layout_weight="0"
+       	android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       	android:background="#ffffff"
+       	android:textColor="#ff0000"
+       	android:text="@string/direction">
+       </TextView>
+</LinearLayout>

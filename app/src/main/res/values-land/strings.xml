@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Kompas!</string>
+    <string name="app_name">kompas</string>
+    <string name="locatienaam">naam van de locatie</string>
+    <string name="ok">OK</string>
+    <string name="cancel">quit</string>
+    <string name="anderelocatie">stoppen</string>
+    <string name="locatie">Locatie</string>
+    <string name="distance">Afstand</string>
+    <string name="add">toevoegen</string>
+    <string name="remove">verwijderen</string>
+    <string name="removeall">locaties verwijderen</string>
+    <string name="open">open</string>
+    <string name="direction">richting</string>
+    <string name="title_activity_kompas">KompasActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="orientation">landscape</string>
+</resources>
