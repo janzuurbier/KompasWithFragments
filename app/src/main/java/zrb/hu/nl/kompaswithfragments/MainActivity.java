@@ -2,13 +2,11 @@ package zrb.hu.nl.kompaswithfragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 
 public class MainActivity extends Activity  {
@@ -17,12 +15,19 @@ public class MainActivity extends Activity  {
     KompasFragment fKompas;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        fList = getFragmentManager().findFragmentById(R.id.listfragment);
-        fKompas = new KompasFragment();
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    fList = getFragmentManager().findFragmentById(R.id.listfragment);
+    fKompas = new KompasFragment();
+    if(getResources().getString(R.string.orientation).equals("landscape")) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.add(R.id.kompascontainer, fKompas);
+        transaction.commit();
     }
+}
+
 
 
     @Override
@@ -45,5 +50,20 @@ public class MainActivity extends Activity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void switchToKompas() {
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+
+        transaction.replace(R.id.maincontainer, fKompas);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void setKompasTarget(String naam, double lon, double lat){
+        fKompas.setNaam(naam);
+        fKompas.setTargetLocation(lon, lat);
     }
 }

@@ -89,7 +89,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             return l;
 		}
 		catch(SQLiteException ex){
-			Log.v("Exception while inserting in database", ex.getMessage());
+			Log.v("MyDBHelper insert", ex.getMessage());
 			return -1;
 		}
 	}

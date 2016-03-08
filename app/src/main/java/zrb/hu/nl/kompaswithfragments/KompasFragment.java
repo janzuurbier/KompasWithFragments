@@ -89,14 +89,16 @@ public class KompasFragment extends Fragment implements LocationListener, Sensor
 
     public void setNaam(String nm){
         targetNaam = nm;
-        nv.setText(targetNaam);
+        if (nv != null) nv.setText(nm);
+
     }
 
     public void setTargetLocation(double lon, double lat){
         targetLocation = new Location(locationprovider);
         targetLocation.setLongitude(lon);
         targetLocation.setLatitude(lat);
-        onLocationChanged(lmanager.getLastKnownLocation(locationprovider));
+        //if (lmanager != null) onLocationChanged(lmanager.getLastKnownLocation(locationprovider));
+
     }
 	 
     public void onResume(){
@@ -106,6 +108,8 @@ public class KompasFragment extends Fragment implements LocationListener, Sensor
     	//smanager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL); 
     	//smanager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_NORMAL);
     	smanager.registerListener(this, orientatiesensor, SensorManager.SENSOR_DELAY_NORMAL);
+        nv.setText(targetNaam);
+        onLocationChanged(lmanager.getLastKnownLocation(locationprovider));
     }
     
     public void onPause(){

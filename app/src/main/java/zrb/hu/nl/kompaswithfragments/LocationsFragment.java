@@ -2,6 +2,8 @@ package zrb.hu.nl.kompaswithfragments;
 
 import zrb.hu.nl.kompaswithfragments.data.MyDBHelper;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -98,18 +100,11 @@ public class LocationsFragment extends ListFragment implements OnItemClickListen
             String naam = theCursor.getString(theCursor.getColumnIndex("naam"));
             double lon = theCursor.getDouble(theCursor.getColumnIndex("longitude"));
             double lat = theCursor.getDouble(theCursor.getColumnIndex("latitude"));
-            Intent intent = new Intent(getActivity(), KompasActivity.class);
+            MainActivity main = (MainActivity)getActivity();
             if (getResources().getString(R.string.orientation).equals("portrait")) {
-                intent.putExtra("naam", naam);
-                intent.putExtra("longitude", lon);
-                intent.putExtra("latitude", lat);
-                startActivity(intent);
+                main.switchToKompas();
             }
-            if (getResources().getString(R.string.orientation).equals("landscape")) {
-                KompasFragment kf = (KompasFragment) getFragmentManager().findFragmentById(R.id.kompasfragment);
-                kf.setNaam(naam);
-                kf.setTargetLocation(lon, lat);
-            }
+            main.setKompasTarget(naam, lon, lat);
         }
         else{
             Log.w("ToonLocaties", "positie " + pos + " niet gevonden.");
